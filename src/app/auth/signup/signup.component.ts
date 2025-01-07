@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {
+  FormArray,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -37,6 +38,11 @@ export class SignupComponent {
     role: new FormControl<
       'student' | 'teacher' | 'employee' | 'founder' | 'other'
     >('student', { validators: [Validators.required] }),
+    source: new FormArray([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+    ]),
     agree: new FormControl(false, { validators: [Validators.required] }),
   });
 
@@ -46,7 +52,5 @@ export class SignupComponent {
 
   onSubmit() {
     console.log(this.form);
-
-    this.form.reset();
   }
 }
